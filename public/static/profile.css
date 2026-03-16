@@ -1,0 +1,181 @@
+/* ============================= */
+/* RESET DASAR */
+/* ============================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #f6f7fb;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+/* ============================= */
+/* BUTTON BACK */
+/* ============================= */
+#gotoIndexPage {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  background-color: #03036b;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+#gotoIndexPage:hover {
+  background-color: #2e2e42;
+  transform: scale(1.05);
+}
+
+/* ============================= */
+/* PROFILE CONTAINER */
+/* ============================= */
+.profile-container {
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  padding: 2rem 3rem;
+  width: 90%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================= */
+/* MAIN BUTTON (EDIT PROFILE) */
+/* ============================= */
+.main-button button {
+  background-color: #03036b;
+  color: white;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.main-button button:hover {
+  background-color: #2e2e42;
+  transform: translateY(-2px);
+}
+
+/* ============================= */
+/* MAIN USER INFO */
+/* ============================= */
+.main-container {
+  text-align: center;
+  background-color: #f9f9fc;
+  padding: 1.5rem;
+  border-radius: 0.8rem;
+  width: 100%;
+}
+
+.main-container div {
+  font-size: 1rem;
+  margin: 0.3rem 0;
+}
+
+#profile-username {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #03036b;
+}
+
+/* ============================= */
+/* MORE INFO */
+/* ============================= */
+.more-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  width: 100%;
+}
+
+.more-container div {
+  background-color: #f1f2f8;
+  padding: 1rem;
+  border-radius: 0.8rem;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease;
+}
+
+.more-container div:hover {
+  transform: translateY(-3px);
+}
+
+/* ============================= */
+/* BOTTOM BUTTONS */
+/* ============================= */
+#more-button {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+#more-button button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+#more-button button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+/* Logout Button Special Style */
+#logout-btn {
+  background-color: #e63946;
+}
+
+#logout-btn:hover {
+  background-color: #c52832;
+}
+
+/* ============================= */
+/* RESPONSIVE */
+/* ============================= */
+@media (max-width: 768px) {
+  .profile-container {
+    padding: 1.5rem;
+  }
+  .more-container {
+    grid-template-columns: 1fr 1fr;
+  }
+  #more-button {
+    flex-direction: column;
+    width: 100%;
+  }
+  #more-button button {
+    width: 100%;
+  }
+}

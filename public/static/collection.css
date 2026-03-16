@@ -1,0 +1,168 @@
+/* ============================= */
+/* RESET DASAR */
+/* ============================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #f6f7fb;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+/* ============================= */
+/* TITLE */
+/* ============================= */
+h1 {
+  font-size: 2rem;
+  color: #03036b;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+/* ============================= */
+/* CONTAINER */
+/* ============================= */
+#collection-container {
+  width: 100%;
+  max-width: 900px;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 1.5rem;
+  overflow-x: auto;
+  animation: fadeIn 0.4s ease;
+}
+
+/* ============================= */
+/* TABLE STYLING */
+/* ============================= */
+#output-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#output-table thead {
+  background-color: #03036b;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+#output-table th,
+#output-table td {
+  padding: 0.9rem 1.2rem;
+  text-align: left;
+}
+
+#output-table tbody tr {
+  transition: background 0.25s ease;
+}
+
+#output-table tbody tr:nth-child(even) {
+  background-color: #f8f9fc;
+}
+
+#output-table tbody tr:hover {
+  background-color: #e7e9ff;
+}
+
+/* ============================= */
+/* SCROLLBAR CUSTOM */
+/* ============================= */
+#collection-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+#collection-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+#collection-container::-webkit-scrollbar-thumb {
+  background: #03036b;
+  border-radius: 4px;
+}
+
+/* ============================= */
+/* ANIMATIONS */
+/* ============================= */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === Back Button Styling === */
+#gotoIndexPage {
+    padding: 0.7rem 1.4rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 25px;
+    border: 2px solid #57abc2;
+    background-color: transparent;
+    color: #57abc2;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    margin-bottom: 1.5rem; /* jarak dari judul */
+}
+
+/* ============================= */
+/* RESPONSIVE */
+/* ============================= */
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
+
+  #collection-container {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+    text-align: center;
+  }
+
+  #output-table th,
+  #output-table td {
+    padding: 0.7rem;
+  }
+}
+
+.delete-btn {
+  background-color: #ff4d4f; /* merah */
+  color: #fff;               /* teks putih */
+  border: none;              /* hapus border default */
+  border-radius: 6px;        /* sudut membulat */
+  padding: 6px 12px;         /* jarak dalam tombol */
+  font-size: 14px;           /* ukuran teks */
+  cursor: pointer;           /* pointer saat hover */
+  transition: background-color 0.2s, transform 0.1s; /* animasi */
+}
+
+.delete-btn:hover {
+  background-color: #ff7875; /* merah lebih terang saat hover */
+  transform: scale(1.05);    /* sedikit membesar */
+}
+
+.delete-btn:active {
+  transform: scale(0.95);    /* efek ditekan */
+}

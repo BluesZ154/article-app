@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Friend</title>
+
+<style>
+
+/* RESET */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:#f6f7fb;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:2rem;
+}
+
+/* TITLE */
+#addFriend-title{
+  font-size:2rem;
+  color:#03036b;
+  margin-bottom:20px;
+}
+
+/* BACK BUTTON */
+#to-index-btn{
+  background:#03036b;
+  color:white;
+  border:none;
+  padding:8px 16px;
+  border-radius:8px;
+  cursor:pointer;
+  margin-bottom:25px;
+  transition:0.2s;
+}
+
+#to-index-btn:hover{
+  background:#007bff;
+  transform:translateY(-2px);
+}
+
+/* SEARCH AREA */
+#search-area{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  background:white;
+  padding:12px 18px;
+  border-radius:12px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.08);
+  margin-bottom:25px;
+}
+
+#search-area label{
+  font-size:14px;
+}
+
+#search-area select,
+#search-area input{
+  padding:6px 10px;
+  border:1px solid #ccc;
+  border-radius:6px;
+}
+
+/* SEARCH BUTTON */
+#search-button{
+  background:#2563eb;
+  border:none;
+  border-radius:8px;
+  padding:8px 10px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:0.2s;
+  box-shadow:0 3px 8px rgba(0,0,0,0.15);
+}
+
+#search-button img{
+  width:18px;
+  filter:brightness(0) invert(1);
+}
+
+#search-button:hover{
+  background:#1d4ed8;
+  transform:translateY(-2px);
+}
+
+/* OUTPUT AREA */
+#output-field{
+  width:100%;
+  max-width:800px;
+}
+
+#output-table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+/* USER CARD STYLE (hasil search) */
+#addFriend-output td{
+  border:none;
+  padding:16px;
+  background:#f8f9fa;
+  border-radius:12px;
+  box-shadow:0 2px 6px rgba(0,0,0,0.08);
+  transition:0.2s;
+}
+
+#addFriend-output td:hover{
+  transform:translateY(-3px);
+  box-shadow:0 4px 10px rgba(0,0,0,0.15);
+}
+
+.target-username-btn{
+  font-size:20px;
+  font-weight:600;
+  cursor:pointer;
+  color:#222;
+}
+
+.target-username-btn:hover{
+  color:#007bff;
+}
+
+/* FOLLOW BUTTON */
+.follow-btn{
+  margin-left:12px;
+  background:#007bff;
+  color:white;
+  border:none;
+  padding:6px 14px;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+.follow-btn:hover{
+  background:#0056b3;
+}
+
+.unfollow-btn{
+  background:#e53935;
+}
+
+.unfollow-btn:hover{
+  background:#c62828;
+}
+
+/* NOTIFICATION */
+#notif-output{
+  margin-top:20px;
+  color:#b30000;
+  font-weight:500;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1 id="addFriend-title">Add Friend</h1>
+
+<button id="to-index-btn" onclick="window.location.href='/index.html'">
+Back
+</button>
+
+<div id="search-area">
+
+<label for="search-by">Search By:</label>
+
+<select id="search-by">
+<option value="username">Username</option>
+<option value="email">Email</option>
+<option value="phonenumber">Phone Number</option>
+</select>
+
+<label for="search-input">Search</label>
+<input type="text" id="search-input">
+
+<button id="search-button">
+<img src="./static/images/searchicon.png">
+</button>
+
+</div>
+
+<div id="output-field">
+
+<table id="output-table">
+<thead></thead>
+<tbody id="addFriend-output"></tbody>
+</table>
+
+<div id="notif-output"></div>
+
+</div>
+
+<script src="./javascript/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./static/editProfile.css">
+  <title>Document</title>
+</head>
+<body>
+  
+  <h1 class="edit-profile-title">Edit Profile</h1>
+
+  <button id="to-profile-btn" onclick="window.location.href = '/profile.html'">Back</button>
+
+  <div class="edit-profile-container">
+
+    <form id="editprofile-form">
+      <label for="new-profile-bio">Bio:</label>
+      <input type="text" id="new-profile-bio" name="new-profile-bio">
+
+      <label for="new-profile-phonenumber">Phonenumber:</label>
+      <input type="text" id="new-profile-phonenumber" name="new-profile-phonenumber">
+
+      <label for="new-profile-location">Location:</label>
+      <input type="text" id="new-profile-location" name="new-profile-location">
+
+      <label for="new-profile-age">Age:</label>
+      <input type="text" id="new-profile-age" name="new-profile-age">
+
+      <label for="new-profile-job">Job:</label>
+      <input type="text" id="new-profile-job" name="new-profile-job">
+
+      <label for="new-profile-skill">Skill:</label>
+      <input type="text" id="new-profile-skill" name="new-profile-skill">
+
+      <input type="submit" id="submit-update-btn">
+
+    </form>
+
+    <div id="edit-profile-output"></div>
+  </div>
+
+  <script src="./javascript/main.js"></script>
+</body>
+</html>

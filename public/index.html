@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./static/index.css">
+  <title>HomePage</title>
+</head>
+<body>
+
+  <div class="sidebar">
+    <h2>Dashboard</h2>
+
+    <div class="menu-item" onclick="window.location.href='/upload.html'">
+      <i>📤</i>
+      <span>Upload Article</span>
+    </div>
+
+    <div class="menu-item" onclick="window.location.href='/collection.html'">
+      <i>📚</i>
+      <span>Collection</span>
+    </div>
+
+    <div class="menu-item" onclick="window.location.href='/addFriend.html'">
+      <i>🧑‍🧒‍🧒</i>
+      <span>Add Friend</span>
+    </div>
+
+    <div class="menu-item" id='to-profilePage' onclick="window.location.href='/profile.html'">
+      <i>👤</i>
+      <span>Profile</span>
+    </div>
+
+    <div class="menu-item" onclick="window.location.href='/about.html'">
+      <i>ℹ️</i>
+      <span>About</span>
+    </div>
+  </div>
+
+  <div class="index-container">
+    <h1 id="title">Articles</h1>
+  
+    <div id="search-area">
+      <label for="search-by">Search By:</label>
+      <select name="search-by" id="search-by">
+        <option value="author">Author</option>
+        <option value="tag">Tag</option>
+        <option value="title">Title</option>
+      </select>
+
+      <label for="search-input">Search</label>
+      <input type="text" id="search-input">
+      <button id='search-article-button'>
+          <img src="./static/images/searchicon.png" alt="search icon">
+      </button>
+      <button 
+        id='refresh-button'
+        onclick="location.reload()"  
+      >
+          <img src="./static/images/refreshIcon.png" alt="refresh icon">
+      </button>
+    </div>
+
+    <div id="output-field">
+      <table id="output-table">
+        <thead></thead>
+        <tbody id="output-area"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="./javascript/main.js"></script>
+</body>
+</html>

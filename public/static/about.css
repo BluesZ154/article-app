@@ -1,0 +1,177 @@
+/* about.css */
+
+/* Import font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root{
+  --bg: #f6f7fb;
+  --card: #ffffff;
+  --accent: #03036b;   /* dark navy */
+  --accent-2: #007bff; /* brighter blue */
+  --muted: #6b7280;    /* gray */
+  --text: #122032;     /* almost black */
+  --soft: #eef5ff;
+  --radius: 12px;
+}
+
+/* Reset-ish */
+*{ box-sizing: border-box; margin:0; padding:0; }
+html,body{ height:100%; }
+
+/* Page layout */
+body{
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(180deg, var(--bg) 0%, #ffffff 100%);
+  color: var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px;
+}
+
+/* Wrapper / card */
+#about-container{
+  width: 100%;
+  max-width: 900px;
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 30px rgba(16,24,40,0.08);
+  padding: 40px 48px;
+  border-left: 6px solid var(--accent);
+  line-height: 1.8;
+  font-size: 1.05rem;
+  color: #173044;
+}
+
+/* Page title */
+h1{
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-align: left;
+  margin-bottom: 18px;
+  letter-spacing: 0.2px;
+}
+
+/* Paragraph spacing */
+#about-container p,
+#about-container > :not(h1){
+  margin-bottom: 1.05rem;
+  color: #243b4a;
+}
+
+/* Emphasis and strong */
+#about-container strong,
+#about-container b{
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Small lead intro (if you add one) */
+.lead{
+  font-size: 1.12rem;
+  color: #243b4a;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+/* Tagline / mission style */
+.mission{
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  margin: 12px 0 20px 0;
+}
+.mission .dot{
+  width:10px; height:10px; border-radius:50%;
+  background: var(--accent-2); margin-top:8px;
+}
+.mission p{ margin:0; }
+
+/* Quote block style */
+blockquote{
+  margin: 18px 0;
+  padding: 14px 18px;
+  background: var(--soft);
+  border-left: 4px solid var(--accent-2);
+  color: #0f1724;
+  border-radius: 8px;
+  font-style: italic;
+}
+
+/* Tags / meta if needed */
+.meta{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top: 14px;
+}
+.meta .pill{
+  background: #f1f8ff;
+  color: var(--accent-2);
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.86rem;
+  border: 1px solid #dfefff;
+}
+
+/* Footer small note */
+.note{
+  margin-top: 22px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* === Back Button Styling === */
+/* === Back Button Placement & Styling === */
+#gotoIndexPage {
+  align-self: flex-start;
+  margin: 0 auto 1.8rem auto;
+  margin-left: -50px;
+  display: block;
+  padding: 0.7rem 1.4rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 25px;
+  border: 2px solid var(--accent-2);
+  background-color: transparent;
+  color: var(--accent-2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* Hover effect */
+#gotoIndexPage:hover {
+  background-color: var(--accent-2);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Center button horizontally above content */
+#gotoIndexPage-wrapper {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  justify-content: flex-start; /* ubah ke 'flex-end' kalau mau di kanan */
+  margin-bottom: 1rem;
+}
+
+
+/* Responsive tweaks */
+@media (max-width: 820px){
+  body{ padding: 28px 14px; }
+  #about-container{ padding: 26px; border-left-width: 4px; }
+  h1{ font-size: 1.6rem; margin-bottom: 12px; }
+  #about-container{ font-size: 1rem; }
+}
+
+@media (max-width: 420px){
+  #about-container{ padding: 20px; border-radius:10px; }
+  h1{ text-align:center; }
+}

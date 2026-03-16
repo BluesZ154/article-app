@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./static/register.css">
+  <title>Register</title>
+</head>
+<body>
+  
+  <h1 id="main-title">Registration Page</h1>
+
+  <form id="register-form">
+
+    <label for="input-username">Username:</label>
+    <input type="text" id="input-username" name="input-username">
+
+    <label for="input-email">Email:</label>
+    <input type="text" id="input-email" name="input-email">
+
+    <label for="input-password">Password:</label>
+    <input type="text" id="input-password" name="input-password">
+
+    <input type="submit" id="submit-create-btn">
+  </form>
+<button id="tologinpage-btn" onclick="window.location.href = '/login.html'">Login</button>
+  
+
+  <div id="output-area-auth"></div>
+
+  <script src="./javascript/main.js"></script>
+</body>
+</html>

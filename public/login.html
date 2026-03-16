@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./static/login.css">
+  <title>Document</title>
+</head>
+<body>
+
+  <div class="login-container">
+      
+    <h1 class="login-title">Login Page</h1>
+
+    <button id="backtoindex-btn" onclick="window.location.href = '/register.html'">Back to Registration Page</button>
+
+    <form id="login-form">
+    
+    <label for="login-email">Email:</label>
+      <input type="text" id="login-email" name="login-email">
+
+      <label for="login-password">Password:</label>
+      <input type="text" id="login-password" name="login-password">
+
+      <input type="submit" id="submit-login-btn">
+
+    </form>
+
+    <div id="output-area-auth"></div>
+
+  </div>
+
+  <script src="./javascript/main.js"></script>
+</body>
+</html>

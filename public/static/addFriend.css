@@ -1,0 +1,141 @@
+/* ============================= */
+/* RESET DASAR */
+/* ============================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #f6f7fb;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+  min-height: 100vh;
+}
+
+/* ============================= */
+/* TITLE DAN BUTTON BACK */
+/* ============================= */
+#detail-title {
+  font-size: 2rem;
+  color: #03036b;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+#to-index-btn {
+  background-color: #03036b;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 2rem;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+#to-index-btn:hover {
+  background-color: #007bff;
+  transform: translateY(-2px);
+}
+
+/* ============================= */
+/* CONTAINER UTAMA */
+/* ============================= */
+#AddFriendDetailArea {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  width: 100%;
+  max-width: 900px;
+}
+
+/* ============================= */
+/* CARD USER (DINAMIS) */
+/* ============================= */
+#AddFriendDetailArea .user-card {
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  padding: 1.5rem 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+#AddFriendDetailArea .user-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Username clickable */
+.user-card .target-username-btn {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #03036b;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.user-card .target-username-btn:hover {
+  color: #007bff;
+}
+
+/* Follow Button */
+.user-card .follow-btn {
+  align-self: flex-start;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.45rem 1rem;
+  border-radius: 0.4rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.user-card .follow-btn:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.user-card .unfollow-btn {
+  background: #e53935;
+  color: white;
+}
+
+.user-card .unfollow-btn:hover {
+  background: #c62828;
+  transform: scale(1.05);
+}
+
+/* Info Text */
+.user-card p {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.4;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
+
+  #detail-title {
+    font-size: 1.6rem;
+  }
+
+  .user-card {
+    padding: 1rem 1.2rem;
+  }
+}

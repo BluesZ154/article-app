@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./static/upload.css">
+  <title>Upload Page</title>
+</head>
+<body>
+
+  <h1>Upload Page</h1>
+
+  <button id="gotoIndexPage" onclick="window.location.href = '/index.html'">Back</button>
+
+  <div class="input-area">
+
+    <label for="input-title">Title:</label>
+    <input type="text" name="input-title" id="input-title">
+  
+    <label for="input-tags">Tags:</label>
+    <input type="text" name="input-tags" id="input-tags">
+  
+  </div>
+
+  <div class="wrapper">
+
+    <div class="editor">
+
+      <div id="editor-container"></div>
+
+      <button class="preview-button btn" id="preview-button">Preview HTML</button>
+      <button class="upload-button btn" id="upload-button">Upload</button>
+    </div>
+
+    <div id="output" class="output"></div>
+
+  </div>
+
+  <div id="notification" class="notification"></div>
+    
+  <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+  <script src="./javascript/upload.js"></script>
+  <script src="./javascript/main.js"></script>
+</body>
+</html>

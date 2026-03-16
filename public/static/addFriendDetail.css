@@ -1,0 +1,137 @@
+/* ======= Global Styles ======= */
+body {
+  font-family: "Poppins", sans-serif;
+  background: #f5f7fa;
+  margin: 0;
+  padding: 40px 20px;
+  color: #333;
+  line-height: 1.6;
+}
+
+h1 {
+  text-align: center;
+  color: #222;
+  margin-bottom: 40px;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+/* ======= Output Button Area ======= */
+#btn-output {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+#btn-output button {
+  background: #2563eb;
+  color: #fff;
+  font-weight: 600;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.1s ease;
+}
+
+#btn-output button:hover {
+  background: #1e40af;
+  transform: scale(1.05);
+}
+
+/* Follow Button */
+.user-card .follow-btn {
+  align-self: flex-start;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.45rem 1rem;
+  border-radius: 0.4rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.user-card .follow-btn:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.user-card .unfollow-btn {
+  background: #e53935;
+  color: white;
+}
+
+.user-card .unfollow-btn:hover {
+  background: #c62828;
+  transform: scale(1.05);
+}
+
+
+/* ======= Output Detail Area ======= */
+#OutputDetailArea {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 18px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+/* ======= Article Card Layout ======= */
+.article-card {
+  border-bottom: 1px solid #eaeaea;
+  padding: 20px 0;
+  transition: background 0.2s ease;
+}
+
+.article-card:last-child {
+  border-bottom: none;
+}
+
+.article-card:hover {
+  background: #f9fbff;
+}
+
+.article-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2563eb;
+  margin-bottom: 5px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.article-title:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+.article-meta {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.article-body {
+  font-size: 1rem;
+  color: #444;
+  margin-top: 5px;
+}
+
+/* ======= Responsive ======= */
+@media (max-width: 600px) {
+  body {
+    padding: 20px 10px;
+  }
+
+  #OutputDetailArea {
+    padding: 20px;
+  }
+
+  .article-title {
+    font-size: 1.1rem;
+  }
+}
+  
