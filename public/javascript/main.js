@@ -12,6 +12,11 @@ const NotifOutput =  document.querySelector('#notif-output');
 const OTPoutput = document.querySelector("#otp-output");
 const SendBtn = document.querySelector("#send-btn");
 
+// API URL auto detect
+const API = location.hostname === "localhost"
+  ? `${API}"
+  : "https://artic`e-app-production.up.railway.app";
+
 document.addEventListener('DOMContentLoaded', async (e) => {
   if (window.location.pathname !== '/OTPverification.html') {
     await CheckToken();
@@ -62,7 +67,7 @@ const Register = async (e) => {
 
     if (!username || !email || !password) throw new Error('Username, Email, Password is Required');
 
-    const res = await fetch('http://localhost:4500/api/auth/register', {
+    const res = await fetch(`${API}/api/auth/register`, {
       method: "POST",
       headers: {
         "Content-Type": 'application/json'
@@ -106,7 +111,7 @@ const Login = async (e) => {
 
     if (!email || !password) throw new Error(`Email and Password is Required`);
 
-    const res = await fetch('http://localhost:4500/api/auth/login', {
+    const res = await fetch(`${API}/api/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": 'application/json'
@@ -141,7 +146,7 @@ const CheckToken = async () => {
   if (pages.some(page => currentPage.endsWith(page))) return;
 
   try {
-    const res = await fetch('http://localhost:4500/api/auth/verify', {
+    const res = await fetch(`${API}/api/auth/verify`, {
       method: 'GET',
       headers: {
         "Content-Type": "application/json"
@@ -152,7 +157,7 @@ const CheckToken = async () => {
     if (!res.ok) throw new Error('Access Token Invalid');
 
   } catch (error) {
-    const refreshRes = await fetch('http://localhost:4500/api/auth/refresh', {
+    const refreshRes = await fetch(`${API}/api/auth/refresh`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -161,7 +166,7 @@ const CheckToken = async () => {
     });    
 
     if (!refreshRes.ok) {
-      const logoutRes = await fetch('http://localhost:4500/api/auth/logout', {
+      const logoutRes = await fetch(`${API}/api/auth/logout`, {
         method: "POST",
         credentials: "include"
       });
@@ -179,7 +184,7 @@ const Upload = async () => {
     const tags = document.querySelector('#input-tags').value;
     if (!content || !title) throw new Error('All Data is Required');
 
-    const res = await fetch('http://localhost:4500/api/article/upload', {
+    const res = await fetch(`${API}/api/article/upload`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -213,7 +218,7 @@ const Upload = async () => {
 
 const ShowArticles = async (e) => {
   try {
-    const res = await fetch('http://localhost:4500/api/article/all', {
+    const res = await fetch(`${API}/api/article/all`, {
       method: "GET",
       credentials: "include"
     });
@@ -281,7 +286,7 @@ const ShowArticleDetails = async (e) => {
     const articleId = params.get('id');
     if (!articleId) throw new Error('Article Id Not Found');
 
-    const res = await fetch(`http://localhost:4500/api/article/id`, {
+    const res = await fetch(`${API}/api/article/id`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -333,7 +338,7 @@ if (window.location.href.includes('articleDetail.html')) {
 
 const ShowProfile = async () => {
   try {
-    const decodeRes = await fetch('http://localhost:4500/api/auth/verify', {
+    const decodeRes = await fetch(`${API}/api/auth/verify`, {
       method: 'GET',
       credentials: "include"
     });
@@ -347,7 +352,7 @@ const ShowProfile = async () => {
     const decode = await decodeRes.json();
     const id = decode.decode.id;
 
-    const userRes = await fetch('http://localhost:4500/api/auth/id', {
+    const userRes = await fetch(`${API}/api/auth/id`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -410,7 +415,7 @@ const ShowProfile = async () => {
 const EditProfile = async (e) => {
   e.preventDefault();
   try {
-    const decodeRes = await fetch('http://localhost:4500/api/auth/verify', {
+    const decodeRes = await fetch(`${API}/api/auth/verify`, {
       method: 'GET',
       credentials: "include"
     });
@@ -424,7 +429,7 @@ const EditProfile = async (e) => {
     const decode = await decodeRes.json();
     const id = decode.decode.id;
 
-    const getRes = await fetch('http://localhost:4500/api/auth/id', {
+    const getRes = await fetch(`${API}/api/auth/id`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -469,7 +474,7 @@ const EditProfile = async (e) => {
     if (!(typeof job === 'string' || job === '-')) throw new Error('Job Must Be Characters');
     if (!(typeof skill === 'string' || skill === '-')) throw new Error('Skill Must Be Characters');
 
-    const updateRes = await fetch('http://localhost:4500/api/auth/update/id', {
+    const updateRes = await fetch(`${API}/api/auth/update/`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -506,7 +511,7 @@ const EditProfile = async (e) => {
 
 const ShowCollection = async () => {
   try {
-    const decodeRes = await fetch('http://localhost:4500/api/auth/verify', {
+    const decodeRes = await fetch(`${API}/api/auth/verify`, {
       method: 'GET',
       credentials: "include"
     }); 
@@ -520,7 +525,7 @@ const ShowCollection = async () => {
     const decode = await decodeRes.json();
     const userId = decode.decode.id;
 
-    const articleRes = await fetch('http://localhost:4500/api/article/user', {
+    const articleRes = await fetch(`${API}/api/article/user`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -574,7 +579,7 @@ const SearchArticle = async () => {
     const input = document.querySelector('#search-input').value;
     if (!input) throw new Error('Input is Empty');
 
-    const searchRes = await fetch('http://localhost:4500/api/article/searchArticle', {
+    const searchRes = await fetch(`${API}/api/article/searchArticle`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -640,7 +645,7 @@ const SearchUser = async () => {
     let input = document.querySelector('#search-input').value;
     if (!input) throw new Error('Input is Empty');
 
-    const searchRes = await fetch('http://localhost:4500/api/article/searchUser', {
+    const searchRes = await fetch(`${API}/api/article/searchUser`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -758,7 +763,7 @@ const ShowTargetUserDetail = async () => {
     const targetId = params.get('targetId');
     if (!targetId) throw new Error('User ID Not Found');
 
-    const res = await fetch('http://localhost:4500/api/auth/id', {
+    const res = await fetch(`${API}/api/auth/id`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -914,7 +919,7 @@ const ShowTargetUserDetail = async () => {
 
 const Follow = async (e) => {
   try {
-    const decodeRes = await fetch('http://localhost:4500/api/auth/verify', {
+    const decodeRes = await fetch(`${API}/api/auth/verify`, {
       method: 'GET',
       credentials: "include"
     });
@@ -932,7 +937,7 @@ const Follow = async (e) => {
     if (!userId) throw new Error('User ID not Found');
     if (!targetId) throw new Error('Target ID not Found');
 
-    const res = await fetch('http://localhost:4500/api/auth/follow', {
+    const res = await fetch(`${API}/api/auth/follow`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -964,7 +969,7 @@ const Follow = async (e) => {
 
 const Unfollow = async (e) => {
   try {
-    const decodeRes = await fetch('http://localhost:4500/api/auth/verify', {
+    const decodeRes = await fetch(`${API}/api/auth/verify`, {
       method: 'GET',
       credentials: "include"
     });
@@ -982,7 +987,7 @@ const Unfollow = async (e) => {
     if (!userId) throw new Error('User ID not Found');
     if (!targetId) throw new Error('Target ID not Found');
 
-    const res = await fetch('http://localhost:4500/api/auth/unfollow', {
+    const res = await fetch(`${API}/api/auth/unfollow`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -1014,7 +1019,7 @@ const Unfollow = async (e) => {
 
 const LikeDislikeArticle = async (e, mode) => {
   try {
-    const decodeRes = await fetch('http://localhost:4500/api/auth/verify', {
+    const decodeRes = await fetch(`${API}/api/auth/verify`, {
       method: 'GET',
       credentials: "include"
     });
@@ -1031,7 +1036,7 @@ const LikeDislikeArticle = async (e, mode) => {
     if (!userId) throw new Error('User ID not Found');
     if (!targetArticleId) throw new Error('Target ID not Found');
 
-    const res = await fetch('http://localhost:4500/api/article/like-dislike', {
+    const res = await fetch(`${API}/api/article/like-disli`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -1083,7 +1088,7 @@ const DeleteArticle = async (e) => {
     const id = e.target.getAttribute('data-id');
     if (!id) return console.log("No ID Provided");
 
-    const res = await fetch('http://localhost:4500/api/article/delete', {
+    const res = await fetch(`${API}/api/article/delete`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -1109,7 +1114,7 @@ const UserLogout = async () => {
   if (!confirm('Confirm To Logout?')) return;
 
   try {
-    const logoutRes = await fetch('http://localhost:4500/api/auth/logout', {
+    const logoutRes = await fetch(`${API}/api/auth/logout`, {
       method: 'GET',
       credentials: "include"
     })
@@ -1134,7 +1139,7 @@ const OTPverification = async () => {
     if (!OTPCode) throw new Error('No OTP Code Provided');
     if (!otpEmail) throw new Error('No Email Provided');
 
-    const res = await fetch('http://localhost:4500/api/auth/otp-verify', {
+    const res = await fetch(`${API}/api/auth/otp-veri`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -1166,7 +1171,7 @@ const OTPverification = async () => {
 const ResendEmail = async () => {
   try {
     const otpEmail =  localStorage.getItem('otpEmail');
-    const res = await fetch('http://localhost:4500/api/auth/resend', {
+    const res = await fetch(`${API}/api/auth/resend`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
