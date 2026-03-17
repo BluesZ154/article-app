@@ -14,8 +14,8 @@ const SendBtn = document.querySelector("#send-btn");
 
 // API URL auto detect
 const API = location.hostname === "localhost"
-  ? `${API}"
-  : "https://artic`e-app-production.up.railway.app";
+  ? "http://localhost:4500"
+  : "https://article-app-production.up.railway.app";
 
 document.addEventListener('DOMContentLoaded', async (e) => {
   if (window.location.pathname !== '/OTPverification.html') {
