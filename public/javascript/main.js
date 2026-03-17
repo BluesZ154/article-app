@@ -11,6 +11,7 @@ const AddFriendDetailArea = document.querySelector('#AddFriendDetailArea');
 const NotifOutput =  document.querySelector('#notif-output');
 const OTPoutput = document.querySelector("#otp-output");
 const SendBtn = document.querySelector("#send-btn");
+const otpCodeShow = document.querySelector("#otp-code-show")
 
 // API URL auto detect
 const API = location.hostname === "localhost"
@@ -1036,7 +1037,7 @@ const LikeDislikeArticle = async (e, mode) => {
     if (!userId) throw new Error('User ID not Found');
     if (!targetArticleId) throw new Error('Target ID not Found');
 
-    const res = await fetch(`${API}/api/article/like-disli`, {
+    const res = await fetch(`${API}/api/article/like-dislike`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -1133,44 +1134,71 @@ const UserLogout = async () => {
 }
 
 const OTPverification = async () => {
-  try {
-    const otpEmail = localStorage.getItem("otpEmail");
-    const OTPCode = document.querySelector('#input-code').value;
-    if (!OTPCode) throw new Error('No OTP Code Provided');
-    if (!otpEmail) throw new Error('No Email Provided');
+  const OTPoutput = document.querySelector('#otp-output');
 
-    const res = await fetch(`${API}/api/auth/otp-veri`, {
+  try {
+    // Ambil data
+    const otpEmail = localStorage.getItem("otpEmail");
+    const OTPCode = document.querySelector('#input-code')?.value?.trim();
+
+    // Validasi basic
+    if (!otpEmail) throw new Error('Session expired. Please request OTP again.');
+    if (!OTPCode) throw new Error('Please enter OTP code.');
+
+    // Loading state
+    OTPoutput.innerHTML = `<p>Verifying...</p>`;
+
+    // Request ke server
+    const res = await fetch(`${API}/api/auth/otp-verify`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
       },
+      credentials: "include",
       body: JSON.stringify({
-        OTPCode: OTPCode,
-        otpEmail: otpEmail
-      }),
-      credentials: "include"
+        OTPCode,
+        otpEmail
+      })
     });
-    if (!res.ok) {
-      const respon = await res.json();
-      OTPoutput.innerHTML = 
-        `<p>Something Went Wrong: ${respon.msg}</p>`;
-        return;
+
+    // Handle response aman
+    let data = {};
+    try {
+      data = await res.json();
+    } catch {
+      // kalau bukan JSON, biarin aja kosong
     }
 
-    alert('Account Verified');
-    window.location.href = '/index.html';
+    if (!res.ok) {
+      throw new Error(data.msg || 'Verification failed');
+    }
+
+    // Success
+    OTPoutput.innerHTML = `<p style="color:green;">Account verified! Redirecting...</p>`;
+
+    // Bersihin data biar gak dipake ulang
+    localStorage.removeItem("otpEmail");
+
+    // Delay biar user sempet baca
+    setTimeout(() => {
+      window.location.href = '/index.html';
+    }, 1500);
 
   } catch (error) {
-    console.log(error);
-    OTPoutput.innerHTML = 
-    `<p>${error}</p>`;
-      return;
+    console.error(error);
+
+    OTPoutput.innerHTML = `
+      <p style="color:red;">
+        ${error.message || 'Something went wrong'}
+      </p>
+    `;
   }
-}
+};
 
 const ResendEmail = async () => {
   try {
-    const otpEmail =  localStorage.getItem('otpEmail');
+    const otpEmail = localStorage.getItem('otpEmail');
+
     const res = await fetch(`${API}/api/auth/resend`, {
       method: 'POST',
       headers: {
@@ -1180,22 +1208,34 @@ const ResendEmail = async () => {
         email: otpEmail 
       }),
       credentials: "include"
-    })
+    });
+
+    let data = {};
+    try {
+      data = await res.json();
+    } catch {}
+
     if (!res.ok) {
-      const respon = await res.json();
-      OTPoutput.innerHTML = 
-        `<p>Something Went Wrong: ${respon.msg}</p>`;
-        return;
+      throw new Error(data.msg || 'Failed to resend OTP');
+    }
+
+    // 🔥 DI SINI TEMPAT YANG BENAR
+    if (data.otp && otpCodeShow) {
+      otpCodeShow.innerHTML = `
+        <p style="color:blue;">
+          Your OTP Code: <b>${data.otp}</b>
+        </p>
+      `;
     }
 
     OTPoutput.innerHTML = `
-      <p>New OTP Code has been Send to Your Email</p>
+      <p>New OTP Code has been sent</p>
     `;
 
   } catch (error) {
     console.log(error);
-    OTPoutput.innerHTML = 
-    `<p>${error}</p>`;
-      return;
+    OTPoutput.innerHTML = `
+      <p>${error.message}</p>
+    `;
   }
-}
+};

@@ -74,9 +74,12 @@ const resendOtpHandler = async (req, res) => {
     const { email } = req.body;
     if (!email) return res.status(400).json({ msg: "Email is required" });
 
-    await SendingEmail(email);
+    const otp = await SendingEmail(email);
 
-    res.json({ msg: "OTP resent" });
+    res.json({ 
+      msg: "OTP resent",
+      otp: otp
+    });
   } catch (err) {
     res.status(400).json({ msg: err.message });
   }
