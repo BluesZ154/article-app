@@ -475,7 +475,7 @@ const EditProfile = async (e) => {
     if (!(typeof job === 'string' || job === '-')) throw new Error('Job Must Be Characters');
     if (!(typeof skill === 'string' || skill === '-')) throw new Error('Skill Must Be Characters');
 
-    const updateRes = await fetch(`${API}/api/auth/update/`, {
+    const updateRes = await fetch(`${API}/api/auth/update/id`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -536,11 +536,12 @@ const ShowCollection = async () => {
       }),
       credentials: "include"
     });
-    if (!articleRes.ok) {
-      const respon = await articleRes.json();
-      CollectionOutput.innerHTML = 
-        `<p>Something Went Wrong: ${respon.msg}</p>`;
-        return;
+   
+    if (!decodeRes.ok) {
+      const text = await decodeRes.text(); // ✅ aman
+      console.log(text); // liat isi aslinya
+      ProfileOutputArea.innerHTML = `<p>Something Went Wrong</p>`;
+      return;
     }
 
     const userArticle = await articleRes.json();
